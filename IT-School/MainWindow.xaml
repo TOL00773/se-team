@@ -7,10 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="gridProducts" AutoGenerateColumns="True">
-            
+        <DataGrid Name="DG1" ItemsSource="{Binding}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name"  Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" />
+            </DataGrid.Columns>
         </DataGrid>
-        <Button Margin="129,280,251,0" >ПОКАЗАТЬ МАССИВ</Button>
-        <Button Margin="266,280,114,0" >ОБНОВИТЬ</Button>
+        <Button Margin="129,280,251,0" Click="Button_Click" >ПОКАЗАТЬ МАССИВ</Button>
+        <Button Margin="199,241,181,39" Click="Button_Click_2" >Считать Excel</Button>
+        <Button Margin="266,280,114,0" Height="39" VerticalAlignment="Top" Click="Button_Click_1" >ОБНОВИТЬ</Button>
     </Grid>
 </Window>
