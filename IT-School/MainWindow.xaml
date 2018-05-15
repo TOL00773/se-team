@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IT_School"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize">
     <Grid>
-        <DataGrid Name="DG1" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserReorderColumns="False" AreRowDetailsFrozen="True">
+        <DataGrid Name="DG1" ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserReorderColumns="False" AreRowDetailsFrozen="True" Margin="0,0,0,83">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="First Name"  Binding="{Binding FirstName}" Width="150">
                     <DataGridTextColumn.ElementStyle>

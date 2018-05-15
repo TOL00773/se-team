@@ -26,25 +26,20 @@ namespace IT_School
     public partial class MainWindow : Window
     {
 
-        public class School
+        public class Organization
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
         }
 
-        ObservableCollection<School> custdata = new ObservableCollection<School>();
+        ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
 
         public MainWindow()
         {
             InitializeComponent();
 
             //GetData() creates a collection of Customer data from a database
-            
 
-            School a = new School();
-            a.FirstName = "Sasha";
-            a.LastName = "Sasha";
-            custdata.Add(a);
             //Bind the DataGrid to the customer data
             DG1.DataContext = custdata;
         }
@@ -80,7 +75,7 @@ namespace IT_School
             //Добавляем полученный из ячейки текст.
             infoA = rangeA.Text.ToString();
             infoB = rangeB.Text.ToString();
-            School a = new School();
+            Organization a = new Organization();
             a.FirstName = infoA;
             a.LastName = infoB;
             custdata.Add(a);
