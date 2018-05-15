@@ -1,21 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace IT_School
@@ -30,23 +17,6 @@ namespace IT_School
         public MainWindow()
         {
             InitializeComponent();
-
-            //GetData() creates a collection of Customer data from a database
-
-
-
-            Organization a = new Organization();
-            a.AccName = "Sasha";
-            a.Name = "Sasha";
-            custdata.Add(a);
-            DG1.ItemsSource = custdata;
-            //Bind the DataGrid to the customer data
-            //DG1.DataContext = custdata;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -56,7 +26,8 @@ namespace IT_School
             WebClient myWebClient = new WebClient();
             myWebClient.DownloadFile(adress, filename);
         }
-        private static string filename = Directory.GetCurrentDirectory()+@"\data.xls";
+        private static string filename = Directory.GetCurrentDirectory() + @"\data.xls";
+
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
@@ -71,23 +42,90 @@ namespace IT_School
             //Выбираем первые сто записей из столбца.
             //Выбираем область таблицы. (в нашем случае просто ячейку)
 
-            Organization a = new Organization();
-            for (int i = 1; i < 101; i++)
+            for (int i = 1; i < 501; i++)
             {
-                //Выбираем область таблицы. (в нашем случае просто ячейку)
-                Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "B" + i.ToString());
-                //Добавляем полученный из ячейки текст.
-                info = range.Text.ToString();
+                Organization a = new Organization();
                 
-                a.AccName = info;
-                a.Name = info;
-                custdata.Add(a);
+                Thread myThreadA = new Thread(func =>
+                {
+                    Excel.Range rangeA = ObjWorkSheet.get_Range("A" + i.ToString(), "A" + i.ToString());
+                    info = rangeA.Text.ToString();
+                    a.AccName = info;
+                    Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "B" + i.ToString());
+                    info = range.Text.ToString();
+                    a.Name = info;
+                    Excel.Range rangeC = ObjWorkSheet.get_Range("C" + i.ToString(), "C" + i.ToString());
+                    info = rangeC.Text.ToString();
+                    a.Adress = info;
 
+                });
+
+                Thread myThreadB = new Thread(func =>
+                {
+                    myThreadA.Start(); //запускаем поток
+                    Excel.Range rangeD = ObjWorkSheet.get_Range("D" + i.ToString(), "D" + i.ToString());
+                    info = rangeD.Text.ToString();
+                    a.GeoData = info;
+                    Excel.Range rangeE = ObjWorkSheet.get_Range("E" + i.ToString(), "E" + i.ToString());
+                    info = rangeE.Text.ToString();
+                    a.WorkTime = info;
+                    Excel.Range rangeF = ObjWorkSheet.get_Range("F" + i.ToString(), "F" + i.ToString());
+                    info = rangeF.Text.ToString();
+                    a.GosID = info;
+                    Excel.Range rangeG = ObjWorkSheet.get_Range("G" + i.ToString(), "G" + i.ToString());
+                    info = rangeG.Text.ToString();
+                    a.Inn = info;
+                });
+
+                myThreadB.Start(); //запускаем поток
+
+                Thread myThreadС = new Thread(func =>
+                {
+                    Excel.Range rangeH = ObjWorkSheet.get_Range("H" + i.ToString(), "H" + i.ToString());
+                    info = rangeH.Text.ToString();
+                    a.DateBegin = info;
+                    Excel.Range rangeI = ObjWorkSheet.get_Range("I" + i.ToString(), "I" + i.ToString());
+                    info = rangeI.Text.ToString();
+                    a.GosAccReq = info;
+                    Excel.Range rangeJ = ObjWorkSheet.get_Range("J" + i.ToString(), "J" + i.ToString());
+                    info = rangeJ.Text.ToString();
+                    a.DateExpire = info;
+                    Excel.Range rangeK = ObjWorkSheet.get_Range("K" + i.ToString(), "K" + i.ToString());
+                    info = rangeK.Text.ToString();
+                    a.EduSpecs = info;
+                });
+
+                myThreadС.Start(); //запускаем поток
+
+                Excel.Range rangeL = ObjWorkSheet.get_Range("L" + i.ToString(), "L" + i.ToString());
+                info = rangeL.Text.ToString();
+                a.ReMake = info;
+                Excel.Range rangeM = ObjWorkSheet.get_Range("M" + i.ToString(), "M" + i.ToString());
+                info = rangeM.Text.ToString();
+                a.StopStart = info;
+                Excel.Range rangeN = ObjWorkSheet.get_Range("N" + i.ToString(), "N" + i.ToString());
+                info = rangeN.Text.ToString();
+                a.StopExec = info;
+                Excel.Range rangeO = ObjWorkSheet.get_Range("O" + i.ToString(), "O" + i.ToString());
+                info = rangeO.Text.ToString();
+                a.Stop = info;
+
+                if (a.AccName == "")
+                {
+                    break;
+                }
+
+                custdata.Add(a);
+                
             }
 
             DG1.ItemsSource = custdata;
+            ObjExcel.Workbooks.Close();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
