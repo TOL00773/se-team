@@ -26,22 +26,28 @@ namespace IT_School
     public partial class MainWindow : Window
     {
 
-        public class School
+        public class Organization
         {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
         }
 
-        ObservableCollection<School> custdata = new ObservableCollection<School>();
+        ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
 
         public MainWindow()
         {
             InitializeComponent();
 
             //GetData() creates a collection of Customer data from a database
-            
 
-            School a = new School();
+
+            Organization a = new Organization();
             a.FirstName = "Sasha";
             a.LastName = "Sasha";
             custdata.Add(a);
@@ -64,26 +70,27 @@ namespace IT_School
         private static string filename = Directory.GetCurrentDirectory()+@"\data.xls";
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            
-            Microsoft.Office.Interop.Excel.Application ObjExcel = new Microsoft.Office.Interop.Excel.Application();
+
+            Excel.Application ObjExcel = new Excel.Application();
             //Открываем книгу.                                                                                                                                                        
-            Microsoft.Office.Interop.Excel.Workbook ObjWorkBook = ObjExcel.Workbooks.Open(filename, 0, true, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+            Excel.Workbook ObjWorkBook = ObjExcel.Workbooks.Open(filename, 0, true, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
             //Выбираем таблицу(лист).
-            Microsoft.Office.Interop.Excel.Worksheet ObjWorkSheet;
-            ObjWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)ObjWorkBook.Sheets[1];
-            string infoA = "";
-            string infoB = "";
+            Excel.Worksheet ObjWorkSheet;
+            ObjWorkSheet = (Excel.Worksheet)ObjWorkBook.Sheets[1];
+            string info = "";
             //Выбираем первые сто записей из столбца.
             //Выбираем область таблицы. (в нашем случае просто ячейку)
-            Microsoft.Office.Interop.Excel.Range rangeA = ObjWorkSheet.get_Range("A1");
-            Microsoft.Office.Interop.Excel.Range rangeB = ObjWorkSheet.get_Range("B1");
-            //Добавляем полученный из ячейки текст.
-            infoA = rangeA.Text.ToString();
-            infoB = rangeB.Text.ToString();
-            School a = new School();
-            a.FirstName = infoA;
-            a.LastName = infoB;
-            custdata.Add(a);
+            for (int i = 1; i < 501; i++)
+            {
+                //Выбираем область таблицы. (в нашем случае просто ячейку)
+                Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "D" + i.ToString());
+                //Добавляем полученный из ячейки текст.
+                info = range.Text.ToString();
+                Organization a = new Organization();
+                a.FirstName = info;
+                custdata.Add(a);
+
+            }
         }
     }
 }
