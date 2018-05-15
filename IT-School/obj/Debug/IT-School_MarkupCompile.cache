@@ -4,28 +4,16 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
 C:\Users\home.PTIZ\Documents\GitHub\se-team\IT-School\obj\Debug\
-=======
-C:\Users\Александр\Documents\GitHub\se-team\IT-School\obj\Debug\
->>>>>>> 70c799d47748dc7db8e48343d6af9be25017aa37
 IT_School
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 C:\Users\home.PTIZ\Documents\GitHub\se-team\IT-School\App.xaml
 11151548125
 
 657540344
 15106393363
-=======
-C:\Users\Александр\Documents\GitHub\se-team\IT-School\App.xaml
-11151548125
-
-657540344
-15-1532838145
->>>>>>> 70c799d47748dc7db8e48343d6af9be25017aa37
 MainWindow.xaml;
 
 False
