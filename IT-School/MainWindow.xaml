@@ -7,10 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="DG1"  AutoGenerateColumns="True" Height="250" VerticalAlignment="Top"/>
-        <Button Margin="54,255,326,0" Click="Button_Click" HorizontalAlignment="Center" Width="137" Height="39" VerticalAlignment="Top" >ПОКАЗАТЬ МАССИВ</Button>
-        <Button Margin="196,255,184,0" Click="Button_Click_2" Height="39" VerticalAlignment="Top" HorizontalAlignment="Center" Width="137" >Считать Excel</Button>
-        <Button Margin="338,255,42,0" Height="39" VerticalAlignment="Top" Click="Button_Click_1" HorizontalAlignment="Center" Width="137" >ОБНОВИТЬ</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dataGrid" Grid.Row="0" Grid.ColumnSpan="3" AutoGenerateColumns="True" />
+        <Button Grid.Row="1" Grid.Column="0" Click="Button_Click">Показать массив</Button>
+        <Button Grid.Row="1" Grid.Column="1" Click="Button_Click_2">Считать Excel</Button>
+        <Button Grid.Row="1" Grid.Column="2" Click="Button_Click_1">Обновить</Button>
     </Grid>
 </Window>
 
