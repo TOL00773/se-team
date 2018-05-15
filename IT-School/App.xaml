@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:IT_School"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="DataGrid">
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+        </Style>
     </Application.Resources>
 </Application>
