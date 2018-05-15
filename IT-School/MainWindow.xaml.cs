@@ -25,13 +25,6 @@ namespace IT_School
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        public class Organization
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-        }
-
         ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
 
         public MainWindow()
@@ -43,14 +36,11 @@ namespace IT_School
 
 
             Organization a = new Organization();
-            a.FirstName = "Sasha";
-            a.LastName = "Sasha";
             a.AccName = "Sasha";
             a.Name = "Sasha";
             custdata.Add(a);
             DG1.ItemsSource = custdata;
             //Bind the DataGrid to the customer data
-            DG1.DataContext = custdata;
             //DG1.DataContext = custdata;
         }
 
@@ -81,18 +71,14 @@ namespace IT_School
             //Выбираем первые сто записей из столбца.
             //Выбираем область таблицы. (в нашем случае просто ячейку)
 
-            for (int i = 1; i < 501; i++)
-            Organization a = new Organization();
+            
             for (int i = 1; i < 101; i++)
             {
                 //Выбираем область таблицы. (в нашем случае просто ячейку)
-                Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "B" + i.ToString());
                 Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "B" + i.ToString());
                 //Добавляем полученный из ячейки текст.
                 info = range.Text.ToString();
                 Organization a = new Organization();
-                a.FirstName = info;
-                
                 a.AccName = info;
                 a.Name = info;
                 custdata.Add(a);
@@ -101,7 +87,6 @@ namespace IT_School
 
             DG1.ItemsSource = custdata;
         }
-
 
     }
 }
