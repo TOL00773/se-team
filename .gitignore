@@ -68,3 +68,6 @@ IT-School/IT-School.csproj
 *.lref
 *.baml
 *.exe
+IT-School/.vs/IT-School/v15/Server/sqlite3/storage.ide
+IT-School/.vs/IT-School/v15/Server/sqlite3/storage.ide-shm
+IT-School/.vs/IT-School/v15/Server/sqlite3/storage.ide-wal
