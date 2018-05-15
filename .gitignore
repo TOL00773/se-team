@@ -26,9 +26,11 @@ IT-School/obj/Debug/IT-School.csprojResolveAssemblyReference.cache
 IT-School/obj/Debug/IT-School.exe
 IT-School/obj/Debug/IT-School.pdb
 IT-School/obj/Debug/IT-School_MarkupCompile.i.lref
+<<<<<<< HEAD
 IT-School/.vs/IT-School/v15/.suo
 IT-School/obj/Debug/IT-School.csproj.CoreCompileInputs.cache
 IT-School/obj/Debug/IT-School_MarkupCompile.i.cache
+=======
 IT-School/.vs/IT-School/v15/Server/sqlite3/storage.ide
 IT-School/bin/Debug/IT-School.exe
 IT-School/bin/Debug/IT-School.pdb
@@ -43,6 +45,7 @@ IT-School/obj/Debug/IT-School_MarkupCompile.i.lref
 IT-School/obj/Debug/IT-School_MarkupCompile.lref
 IT-School/obj/Debug/MainWindow.baml
 *.cache
+>>>>>>> 74ba45648bdda5f2f63616719121f365661ef97b
 IT-School/bin/Debug/IT-School.exe
 *.exe
 *.ide-wal
@@ -64,3 +67,4 @@ IT-School/IT-School.csproj
 *.lref
 *.lref
 *.baml
+*.exe
