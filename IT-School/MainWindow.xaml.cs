@@ -26,6 +26,14 @@ namespace IT_School
     public partial class MainWindow : Window
     {
 
+<<<<<<< HEAD
+=======
+        public class Organization
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+        }
+>>>>>>> 2165a90396681e1c73670512d9b1207994b8c5e0
 
         ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
 
@@ -34,6 +42,7 @@ namespace IT_School
             InitializeComponent();
 
             //GetData() creates a collection of Customer data from a database
+
 
 
             Organization a = new Organization();
@@ -69,10 +78,15 @@ namespace IT_School
             string info = "";
             //Выбираем первые сто записей из столбца.
             //Выбираем область таблицы. (в нашем случае просто ячейку)
+
             for (int i = 1; i < 501; i++)
             {
                 //Выбираем область таблицы. (в нашем случае просто ячейку)
+<<<<<<< HEAD
                 Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("A" + i.ToString(), "A" + i.ToString());
+=======
+                Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "B" + i.ToString());
+>>>>>>> 2165a90396681e1c73670512d9b1207994b8c5e0
                 //Добавляем полученный из ячейки текст.
                 info = range.Text.ToString();
                 Organization a = new Organization();
