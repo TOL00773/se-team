@@ -30,6 +30,12 @@ namespace IT_School
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
         }
 
         ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
@@ -40,6 +46,10 @@ namespace IT_School
 
             //GetData() creates a collection of Customer data from a database
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7aba9fad65ebb305604ac0ae921a105771184c52
             //Bind the DataGrid to the customer data
             DG1.DataContext = custdata;
         }
@@ -70,6 +80,7 @@ namespace IT_School
             string infoB = "";
             //Выбираем первые сто записей из столбца.
             //Выбираем область таблицы. (в нашем случае просто ячейку)
+<<<<<<< HEAD
             Microsoft.Office.Interop.Excel.Range rangeA = ObjWorkSheet.get_Range("A1");
             Microsoft.Office.Interop.Excel.Range rangeB = ObjWorkSheet.get_Range("B1");
             //Добавляем полученный из ячейки текст.
@@ -79,6 +90,8 @@ namespace IT_School
             a.FirstName = infoA;
             a.LastName = infoB;
             custdata.Add(a);
+=======
+>>>>>>> 7aba9fad65ebb305604ac0ae921a105771184c52
         }
 
 
