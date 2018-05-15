@@ -25,16 +25,6 @@ namespace IT_School
     /// </summary>
     public partial class MainWindow : Window
     {
-
-<<<<<<< HEAD
-=======
-        public class Organization
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-        }
->>>>>>> 2165a90396681e1c73670512d9b1207994b8c5e0
-
         ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
 
         public MainWindow()
@@ -47,10 +37,11 @@ namespace IT_School
 
             Organization a = new Organization();
             a.AccName = "Sasha";
-            a.LastName = "Sasha";
+            a.Name = "Sasha";
             custdata.Add(a);
+            DG1.ItemsSource = custdata;
             //Bind the DataGrid to the customer data
-            DG1.DataContext = custdata;
+            //DG1.DataContext = custdata;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -66,6 +57,7 @@ namespace IT_School
             myWebClient.DownloadFile(adress, filename);
         }
         private static string filename = Directory.GetCurrentDirectory()+@"\data.xls";
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
@@ -79,23 +71,21 @@ namespace IT_School
             //Выбираем первые сто записей из столбца.
             //Выбираем область таблицы. (в нашем случае просто ячейку)
 
-            for (int i = 1; i < 501; i++)
+            Organization a = new Organization();
+            for (int i = 1; i < 101; i++)
             {
                 //Выбираем область таблицы. (в нашем случае просто ячейку)
-<<<<<<< HEAD
-                Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("A" + i.ToString(), "A" + i.ToString());
-=======
-                Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "B" + i.ToString());
->>>>>>> 2165a90396681e1c73670512d9b1207994b8c5e0
+                Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "B" + i.ToString());
                 //Добавляем полученный из ячейки текст.
                 info = range.Text.ToString();
-                Organization a = new Organization();
                 
-                a.AccName = range.Text.ToString();
-                a.Name = range.Text.ToString();
+                a.AccName = info;
+                a.Name = info;
                 custdata.Add(a);
 
             }
+
+            DG1.ItemsSource = custdata;
         }
 
 

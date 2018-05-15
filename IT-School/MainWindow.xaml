@@ -5,26 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IT_School"
         mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
     <Grid>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="First Name"  Binding="{Binding FirstName}" Width="150">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style>
-                            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="150">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style>
-                            <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Margin="129,280,251,0" Click="Button_Click" >ПОКАЗАТЬ МАССИВ</Button>
-        <Button Margin="199,241,181,39" Click="Button_Click_2" >Считать Excel</Button>
-        <Button Margin="266,280,114,0" Height="39" VerticalAlignment="Top" Click="Button_Click_1" >ОБНОВИТЬ</Button>
+        <DataGrid x:Name="DG1"  AutoGenerateColumns="True" Height="250" VerticalAlignment="Top"/>
+        <Button Margin="54,255,326,0" Click="Button_Click" HorizontalAlignment="Center" Width="137" Height="39" VerticalAlignment="Top" >ПОКАЗАТЬ МАССИВ</Button>
+        <Button Margin="196,255,184,0" Click="Button_Click_2" Height="39" VerticalAlignment="Top" HorizontalAlignment="Center" Width="137" >Считать Excel</Button>
+        <Button Margin="338,255,42,0" Height="39" VerticalAlignment="Top" Click="Button_Click_1" HorizontalAlignment="Center" Width="137" >ОБНОВИТЬ</Button>
     </Grid>
 </Window>
+
