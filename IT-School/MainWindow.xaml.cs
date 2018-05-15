@@ -26,17 +26,6 @@ namespace IT_School
     public partial class MainWindow : Window
     {
 
-        public class Organization
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-        }
 
         ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
 
@@ -48,7 +37,7 @@ namespace IT_School
 
 
             Organization a = new Organization();
-            a.FirstName = "Sasha";
+            a.AccName = "Sasha";
             a.LastName = "Sasha";
             custdata.Add(a);
             //Bind the DataGrid to the customer data
@@ -83,11 +72,13 @@ namespace IT_School
             for (int i = 1; i < 501; i++)
             {
                 //Выбираем область таблицы. (в нашем случае просто ячейку)
-                Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("B" + i.ToString(), "D" + i.ToString());
+                Microsoft.Office.Interop.Excel.Range range = ObjWorkSheet.get_Range("A" + i.ToString(), "A" + i.ToString());
                 //Добавляем полученный из ячейки текст.
                 info = range.Text.ToString();
                 Organization a = new Organization();
-                a.FirstName = info;
+                
+                a.AccName = range.Text.ToString();
+                a.Name = range.Text.ToString();
                 custdata.Add(a);
 
             }
