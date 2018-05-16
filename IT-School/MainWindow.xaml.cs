@@ -13,7 +13,7 @@ namespace IT_School
     public partial class MainWindow : Window
     {
         ObservableCollection<Organization> custdata = new ObservableCollection<Organization>();
-
+        bool Readed = true;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,23 +31,23 @@ namespace IT_School
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
-            Excel.Application ObjExcel = new Excel.Application();
-            //Открываем книгу.                                                                                                                                                        
-            Excel.Workbook ObjWorkBook = ObjExcel.Workbooks.Open(filename, 0, true, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
-            //Выбираем таблицу(лист).
-            Excel.Worksheet ObjWorkSheet;
-            ObjWorkSheet = (Excel.Worksheet)ObjWorkBook.Sheets[1];
-            string info = "";
-            //Выбираем первые сто записей из столбца.
-            //Выбираем область таблицы. (в нашем случае просто ячейку)
-
-            for (int i = 1; i < 501; i++)
+            if (Readed)
             {
-                Organization a = new Organization();
-                
-                //Thread myThreadA = new Thread(func =>
-                //{
+                Excel.Application ObjExcel = new Excel.Application();
+                //Открываем книгу.                                                                                                                                                        
+                Excel.Workbook ObjWorkBook = ObjExcel.Workbooks.Open(filename, 0, true, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                //Выбираем таблицу(лист).
+                Excel.Worksheet ObjWorkSheet;
+                ObjWorkSheet = (Excel.Worksheet)ObjWorkBook.Sheets[1];
+                string info = "";
+                //Выбираем первые сто записей из столбца.
+                //Выбираем область таблицы. (в нашем случае просто ячейку)
+
+                for (int i = 1; i < 501; i++)
+                {
+                    Organization a = new Organization();
+                    //Thread myThreadA = new Thread(func =>
+                    //{
                     Excel.Range rangeA = ObjWorkSheet.get_Range("A" + i.ToString(), "A" + i.ToString());
                     info = rangeA.Text.ToString();
                     a.AccName = info;
@@ -58,11 +58,11 @@ namespace IT_School
                     info = rangeC.Text.ToString();
                     a.Adress = info;
 
-                //});
+                    //});
 
-                //Thread myThreadB = new Thread(func =>
-                //{
-                  //  myThreadA.Start(); //запускаем поток
+                    //Thread myThreadB = new Thread(func =>
+                    //{
+                    //  myThreadA.Start(); //запускаем поток
                     Excel.Range rangeD = ObjWorkSheet.get_Range("D" + i.ToString(), "D" + i.ToString());
                     info = rangeD.Text.ToString();
                     a.GeoData = info;
@@ -75,12 +75,12 @@ namespace IT_School
                     Excel.Range rangeG = ObjWorkSheet.get_Range("G" + i.ToString(), "G" + i.ToString());
                     info = rangeG.Text.ToString();
                     a.Inn = info;
-                //});
+                    //});
 
-                //myThreadB.Start(); //запускаем поток
+                    //myThreadB.Start(); //запускаем поток
 
-                //Thread myThreadС = new Thread(func =>
-                //{
+                    //Thread myThreadС = new Thread(func =>
+                    //{
                     Excel.Range rangeH = ObjWorkSheet.get_Range("H" + i.ToString(), "H" + i.ToString());
                     info = rangeH.Text.ToString();
                     a.DateBegin = info;
@@ -93,34 +93,35 @@ namespace IT_School
                     Excel.Range rangeK = ObjWorkSheet.get_Range("K" + i.ToString(), "K" + i.ToString());
                     info = rangeK.Text.ToString();
                     a.EduSpecs = info;
-                //});
+                    //});
 
-                //myThreadС.Start(); //запускаем поток
+                    //myThreadС.Start(); //запускаем поток
 
-                Excel.Range rangeL = ObjWorkSheet.get_Range("L" + i.ToString(), "L" + i.ToString());
-                info = rangeL.Text.ToString();
-                a.ReMake = info;
-                Excel.Range rangeM = ObjWorkSheet.get_Range("M" + i.ToString(), "M" + i.ToString());
-                info = rangeM.Text.ToString();
-                a.StopStart = info;
-                Excel.Range rangeN = ObjWorkSheet.get_Range("N" + i.ToString(), "N" + i.ToString());
-                info = rangeN.Text.ToString();
-                a.StopExec = info;
-                Excel.Range rangeO = ObjWorkSheet.get_Range("O" + i.ToString(), "O" + i.ToString());
-                info = rangeO.Text.ToString();
-                a.Stop = info;
+                    Excel.Range rangeL = ObjWorkSheet.get_Range("L" + i.ToString(), "L" + i.ToString());
+                    info = rangeL.Text.ToString();
+                    a.ReMake = info;
+                    Excel.Range rangeM = ObjWorkSheet.get_Range("M" + i.ToString(), "M" + i.ToString());
+                    info = rangeM.Text.ToString();
+                    a.StopStart = info;
+                    Excel.Range rangeN = ObjWorkSheet.get_Range("N" + i.ToString(), "N" + i.ToString());
+                    info = rangeN.Text.ToString();
+                    a.StopExec = info;
+                    Excel.Range rangeO = ObjWorkSheet.get_Range("O" + i.ToString(), "O" + i.ToString());
+                    info = rangeO.Text.ToString();
+                    a.Stop = info;
 
-                if (a.AccName == "")
-                {
-                    break;
+                    if (a.AccName == "")
+                    {
+                        break;
+                    }
+
+                    custdata.Add(a);
+
                 }
-
-                custdata.Add(a);
-                
+                ObjExcel.Workbooks.Close();
+                Readed = false;
             }
-
             DG1.ItemsSource = custdata;
-            ObjExcel.Workbooks.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
