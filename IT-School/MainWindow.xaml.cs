@@ -46,8 +46,8 @@ namespace IT_School
             {
                 Organization a = new Organization();
                 
-                Thread myThreadA = new Thread(func =>
-                {
+                //Thread myThreadA = new Thread(func =>
+                //{
                     Excel.Range rangeA = ObjWorkSheet.get_Range("A" + i.ToString(), "A" + i.ToString());
                     info = rangeA.Text.ToString();
                     a.AccName = info;
@@ -58,11 +58,11 @@ namespace IT_School
                     info = rangeC.Text.ToString();
                     a.Adress = info;
 
-                });
+                //});
 
-                Thread myThreadB = new Thread(func =>
-                {
-                    myThreadA.Start(); //запускаем поток
+                //Thread myThreadB = new Thread(func =>
+                //{
+                  //  myThreadA.Start(); //запускаем поток
                     Excel.Range rangeD = ObjWorkSheet.get_Range("D" + i.ToString(), "D" + i.ToString());
                     info = rangeD.Text.ToString();
                     a.GeoData = info;
@@ -75,12 +75,12 @@ namespace IT_School
                     Excel.Range rangeG = ObjWorkSheet.get_Range("G" + i.ToString(), "G" + i.ToString());
                     info = rangeG.Text.ToString();
                     a.Inn = info;
-                });
+                //});
 
-                myThreadB.Start(); //запускаем поток
+                //myThreadB.Start(); //запускаем поток
 
-                Thread myThreadС = new Thread(func =>
-                {
+                //Thread myThreadС = new Thread(func =>
+                //{
                     Excel.Range rangeH = ObjWorkSheet.get_Range("H" + i.ToString(), "H" + i.ToString());
                     info = rangeH.Text.ToString();
                     a.DateBegin = info;
@@ -93,9 +93,9 @@ namespace IT_School
                     Excel.Range rangeK = ObjWorkSheet.get_Range("K" + i.ToString(), "K" + i.ToString());
                     info = rangeK.Text.ToString();
                     a.EduSpecs = info;
-                });
+                //});
 
-                myThreadС.Start(); //запускаем поток
+                //myThreadС.Start(); //запускаем поток
 
                 Excel.Range rangeL = ObjWorkSheet.get_Range("L" + i.ToString(), "L" + i.ToString());
                 info = rangeL.Text.ToString();
@@ -125,7 +125,9 @@ namespace IT_School
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Selecting myCol = new Selecting();
+            myCol.ByAdress(TextBox1.Text, custdata);
+            DG1.ItemsSource = myCol.orgs;
         }
     }
 }
